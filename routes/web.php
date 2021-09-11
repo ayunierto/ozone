@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConectionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,18 +17,11 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Main', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+    return Inertia::render('Main');
+})->name('main');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-// Route::get('/', function () {
-//    return Inertia::render('test');
-//  });    
+Route::get('conection', [ConectionController::class, 'login']);
