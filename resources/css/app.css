@@ -3,3 +3,7 @@
 @import 'tailwindcss/utilities';*/
 
  @import "vuetify/dist/vuetify.min.css";
+
+ a {
+     text-decoration: none;
+ }
